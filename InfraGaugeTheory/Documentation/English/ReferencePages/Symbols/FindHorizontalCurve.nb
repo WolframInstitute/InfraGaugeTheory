@@ -1,0 +1,96 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      3759,         87]
+NotebookOptionsPosition[      2486,         64]
+NotebookOutlinePosition[      2803,         78]
+CellTagsIndexPosition[      2760,         75]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["FindHorizontalCurve", "Title",ExpressionUUID->"627752cc-698f-4844-b976-9cc762e817e8"],
+
+Cell["\<\
+FindHorizontalCurve[connection, proj, startVertex, basePath] finds a \
+horizontal lift of a base path starting from a fiber vertex.\
+\>", "Text",ExpressionUUID->"d056bb03-2f98-42c2-b73f-ba3f200301f7"],
+
+Cell["Details", "Section",ExpressionUUID->"bdaa8279-b406-4cf9-944c-25ec41f923fe"],
+
+Cell["basePath is a list of base vertices forming a walk.", "Text",ExpressionUUID->"33f11cfd-083e-4966-a5a9-708db518a7bf"],
+
+Cell["\<\
+startVertex must be a fiber vertex projecting to the first vertex of basePath.\
+\>", "Text",ExpressionUUID->"42e355aa-db83-4e95-8210-ab4306a1b1f0"],
+
+Cell["\<\
+The result is a list of fiber vertices forming a horizontal curve: each \
+consecutive pair is connected by a connection edge.\
+\>", "Text",ExpressionUUID->"cbe2956f-3a4d-4bf1-a627-235d41c9fa7b"],
+
+Cell["The projection of the horizontal curve equals basePath.", "Text",ExpressionUUID->"8dacee89-1bf3-47f4-8171-913d9d32b427"],
+
+Cell["\<\
+If a lift cannot continue (no connection edge in the required direction), the \
+curve is truncated.\
+\>", "Text",ExpressionUUID->"de1942cc-3220-4ae6-9012-af19fd458fbb"],
+
+Cell["Examples", "Section",ExpressionUUID->"c6e21bbc-719d-45f3-82df-2b4f4465461f"],
+
+Cell["Needs[\"WolframInstitute`InfraGaugeTheory`\"]", "Input",ExpressionUUID->"4c064c78-c245-42ea-b432-0167962f850e"],
+
+Cell["Lift a base path:", "Text",ExpressionUUID->"ddd67698-aa3f-4e3e-ad8f-40b6f33224f1"],
+
+Cell["\<\
+{total, proj} = RandomGraphFibration[CycleGraph[5], \"VerticalVertices\" -> 3];
+conn = RandomConnection[total, proj];
+base = ReconstructBaseGraph[total, proj];
+path = First[FindPath[base, 1, 3, Infinity, 1]];
+fibers = GroupBy[Normal @ proj, Last -> First];
+start = First[fibers[1]];
+curve = FindHorizontalCurve[conn, proj, start, path];
+{curve, proj /@ curve}\
+\>", "Input",ExpressionUUID->"0f9f6ea1-c5eb-4bef-912e-edc4beb9a77d"]
+},
+FrontEndVersion->"14.3 for Mac OS X ARM (64-bit) (July 8, 2025)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"9a65f32f-e27e-4297-aaf7-d4b8f9f060c2"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[554, 20, 91, 0, 70, "Title",ExpressionUUID->"627752cc-698f-4844-b976-9cc762e817e8"],
+Cell[648, 22, 210, 3, 70, "Text",ExpressionUUID->"d056bb03-2f98-42c2-b73f-ba3f200301f7"],
+Cell[861, 27, 81, 0, 70, "Section",ExpressionUUID->"bdaa8279-b406-4cf9-944c-25ec41f923fe"],
+Cell[945, 29, 122, 0, 70, "Text",ExpressionUUID->"33f11cfd-083e-4966-a5a9-708db518a7bf"],
+Cell[1070, 31, 157, 2, 70, "Text",ExpressionUUID->"42e355aa-db83-4e95-8210-ab4306a1b1f0"],
+Cell[1230, 35, 204, 3, 70, "Text",ExpressionUUID->"cbe2956f-3a4d-4bf1-a627-235d41c9fa7b"],
+Cell[1437, 40, 126, 0, 70, "Text",ExpressionUUID->"8dacee89-1bf3-47f4-8171-913d9d32b427"],
+Cell[1566, 42, 178, 3, 70, "Text",ExpressionUUID->"de1942cc-3220-4ae6-9012-af19fd458fbb"],
+Cell[1747, 47, 82, 0, 70, "Section",ExpressionUUID->"c6e21bbc-719d-45f3-82df-2b4f4465461f"],
+Cell[1832, 49, 117, 0, 70, "Input",ExpressionUUID->"4c064c78-c245-42ea-b432-0167962f850e"],
+Cell[1952, 51, 88, 0, 70, "Text",ExpressionUUID->"ddd67698-aa3f-4e3e-ad8f-40b6f33224f1"],
+Cell[2043, 53, 439, 9, 70, "Input",ExpressionUUID->"0f9f6ea1-c5eb-4bef-912e-edc4beb9a77d"]
+}
+]
+*)
+
+(* End of internal cache information *)

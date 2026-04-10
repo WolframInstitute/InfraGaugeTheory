@@ -1,0 +1,157 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      6711,        148]
+NotebookOptionsPosition[      4251,        112]
+NotebookOutlinePosition[      4568,        126]
+CellTagsIndexPosition[      4525,        123]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["RandomGraphFibration", "Title",ExpressionUUID->"ee2d5e46-d442-4ff6-9d50-856494b6e9f6"],
+
+Cell["\<\
+RandomGraphFibration[g] creates a random fiber bundle structure over a base \
+graph g.\
+\>", "Text",ExpressionUUID->"2fcc640e-2136-4758-96f9-e3d70c401f44"],
+
+Cell["\<\
+RandomGraphFibration[g, opts] uses options to control fiber size and edge \
+structure.\
+\>", "Text",ExpressionUUID->"70911a59-866d-4bc6-b41c-7d15b847b0c0"],
+
+Cell["Details", "Section",ExpressionUUID->"a3013883-3699-4b51-ac6d-7b9171463039"],
+
+Cell["\<\
+RandomGraphFibration returns {totalGraph, projection} where projection is an \
+Association mapping total space vertices to base vertices.\
+\>", "Text",ExpressionUUID->"5e1e4938-af87-4ee9-b0c8-4b0ed6ac2665"],
+
+Cell["Options:", "Text",ExpressionUUID->"62a6d7c7-8e0e-46d2-9d3d-d4dfd7e5083a"],
+
+Cell["\<\
+\"VerticalVertices\" \\[Rule] 1  \\[LongDash]  number of fiber vertices per \
+base vertex (integer or {min, max} for random)\
+\>", "Item",ExpressionUUID->"b8b42b00-1f76-45bb-bb31-f21e9c041b89"],
+
+Cell["\<\
+\"VerticalEdges\" \\[Rule] 0  \\[LongDash]  number of edges within each fiber\
+\
+\>", "Item",ExpressionUUID->"dffd6b6a-5c92-47a0-94ae-4261776006c6"],
+
+Cell["\<\
+\"HorizontalEdgesRadius\" \\[Rule] 1  \\[LongDash]  base distance within \
+which horizontal edges are created\
+\>", "Item",ExpressionUUID->"0da09053-b0c9-4258-890b-025a83fc0d61"],
+
+Cell["\<\
+\"HorizontalEdgesDensity\" \\[Rule] 1  \\[LongDash]  density of horizontal \
+edges between fibers\
+\>", "Item",ExpressionUUID->"958c9261-059b-4b27-80fd-e07c2aef360e"],
+
+Cell["Examples", "Section",ExpressionUUID->"f06d7963-3699-4941-bad8-bf488c828151"],
+
+Cell["Load the package:", "Text",ExpressionUUID->"f4cc4c39-2e98-434d-a0c7-c9103396f678"],
+
+Cell["Needs[\"WolframInstitute`InfraGaugeTheory`\"]", "Input",ExpressionUUID->"b7c6a6cb-fd17-47df-bda4-24d672e15b8d"],
+
+Cell["\<\
+Create a trivial fibration over a cycle graph (fiber size 1):\
+\>", "Text",ExpressionUUID->"b493fb2e-be5e-4a43-8764-a6a1d49fa685"],
+
+Cell["{total, proj} = RandomGraphFibration[CycleGraph[5]]", "Input",ExpressionUUID->"43fd33dc-9478-43d0-9628-8b6a914a8da5"],
+
+Cell["Create a fibration with 3-element fibers:", "Text",ExpressionUUID->"4047506b-8746-4933-90b3-19c2c3616bef"],
+
+Cell["\<\
+{total, proj} = RandomGraphFibration[CycleGraph[5], \"VerticalVertices\" -> 3];
+{VertexCount[total], EdgeCount[total]}\
+\>", "Input",ExpressionUUID->"4f90a2c3-cbf0-4395-be99-854815341c26"],
+
+Cell["Visualize with CircularFiberGraph:", "Text",ExpressionUUID->"d5e744e0-df25-446e-829c-864779883eff"],
+
+Cell["\<\
+{total, proj} = RandomGraphFibration[CycleGraph[5], \"VerticalVertices\" -> 3];
+CircularFiberGraph[total, proj]\
+\>", "Input",ExpressionUUID->"c079f406-1a64-488d-b408-19415fab9516"],
+
+Cell["Random fiber sizes between 1 and 4:", "Text",ExpressionUUID->"7a13cc1c-6020-4ade-bcd0-eda55ba44403"],
+
+Cell["\<\
+SeedRandom[42];
+{total, proj} = RandomGraphFibration[CycleGraph[5], \"VerticalVertices\" -> \
+{1, 4}];
+Length /@ GroupBy[Normal @ proj, Last -> First]\
+\>", "Input",ExpressionUUID->"71d06e58-b460-46ba-b64d-514f7468fe7c"],
+
+Cell["Add edges within fibers:", "Text",ExpressionUUID->"bae5ac0f-075c-4e7f-a352-775aca2ed72b"],
+
+Cell["\<\
+{total, proj} = RandomGraphFibration[CycleGraph[5], \"VerticalVertices\" -> \
+3, \"VerticalEdges\" -> 2];
+CircularFiberGraph[total, proj]\
+\>", "Input",ExpressionUUID->"90712efd-a92a-4f41-bb10-c17b4223bdce"],
+
+Cell["Fibration over a grid graph:", "Text",ExpressionUUID->"d9b69be9-7f98-442f-a1f9-281ce9d2cba6"],
+
+Cell["\<\
+{total, proj} = RandomGraphFibration[GridGraph[{3, 3}], \"VerticalVertices\" \
+-> 2];
+FibrationGraph3D[total, proj]\
+\>", "Input",ExpressionUUID->"2d003d16-0079-4ade-af6f-3212c42fb970"]
+},
+FrontEndVersion->"14.3 for Mac OS X ARM (64-bit) (July 8, 2025)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"9a65f32f-e27e-4297-aaf7-d4b8f9f060c2"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[554, 20, 92, 0, 70, "Title",ExpressionUUID->"ee2d5e46-d442-4ff6-9d50-856494b6e9f6"],
+Cell[649, 22, 165, 3, 70, "Text",ExpressionUUID->"2fcc640e-2136-4758-96f9-e3d70c401f44"],
+Cell[817, 27, 165, 3, 70, "Text",ExpressionUUID->"70911a59-866d-4bc6-b41c-7d15b847b0c0"],
+Cell[985, 32, 81, 0, 70, "Section",ExpressionUUID->"a3013883-3699-4b51-ac6d-7b9171463039"],
+Cell[1069, 34, 216, 3, 70, "Text",ExpressionUUID->"5e1e4938-af87-4ee9-b0c8-4b0ed6ac2665"],
+Cell[1288, 39, 79, 0, 70, "Text",ExpressionUUID->"62a6d7c7-8e0e-46d2-9d3d-d4dfd7e5083a"],
+Cell[1370, 41, 203, 3, 70, "Item",ExpressionUUID->"b8b42b00-1f76-45bb-bb31-f21e9c041b89"],
+Cell[1576, 46, 158, 3, 70, "Item",ExpressionUUID->"dffd6b6a-5c92-47a0-94ae-4261776006c6"],
+Cell[1737, 51, 188, 3, 70, "Item",ExpressionUUID->"0da09053-b0c9-4258-890b-025a83fc0d61"],
+Cell[1928, 56, 176, 3, 70, "Item",ExpressionUUID->"958c9261-059b-4b27-80fd-e07c2aef360e"],
+Cell[2107, 61, 82, 0, 70, "Section",ExpressionUUID->"f06d7963-3699-4941-bad8-bf488c828151"],
+Cell[2192, 63, 88, 0, 70, "Text",ExpressionUUID->"f4cc4c39-2e98-434d-a0c7-c9103396f678"],
+Cell[2283, 65, 117, 0, 70, "Input",ExpressionUUID->"b7c6a6cb-fd17-47df-bda4-24d672e15b8d"],
+Cell[2403, 67, 140, 2, 70, "Text",ExpressionUUID->"b493fb2e-be5e-4a43-8764-a6a1d49fa685"],
+Cell[2546, 71, 123, 0, 70, "Input",ExpressionUUID->"43fd33dc-9478-43d0-9628-8b6a914a8da5"],
+Cell[2672, 73, 112, 0, 70, "Text",ExpressionUUID->"4047506b-8746-4933-90b3-19c2c3616bef"],
+Cell[2787, 75, 198, 3, 70, "Input",ExpressionUUID->"4f90a2c3-cbf0-4395-be99-854815341c26"],
+Cell[2988, 80, 105, 0, 70, "Text",ExpressionUUID->"d5e744e0-df25-446e-829c-864779883eff"],
+Cell[3096, 82, 191, 3, 70, "Input",ExpressionUUID->"c079f406-1a64-488d-b408-19415fab9516"],
+Cell[3290, 87, 106, 0, 70, "Text",ExpressionUUID->"7a13cc1c-6020-4ade-bcd0-eda55ba44403"],
+Cell[3399, 89, 230, 5, 70, "Input",ExpressionUUID->"71d06e58-b460-46ba-b64d-514f7468fe7c"],
+Cell[3632, 96, 95, 0, 70, "Text",ExpressionUUID->"bae5ac0f-075c-4e7f-a352-775aca2ed72b"],
+Cell[3730, 98, 217, 4, 70, "Input",ExpressionUUID->"90712efd-a92a-4f41-bb10-c17b4223bdce"],
+Cell[3950, 104, 99, 0, 70, "Text",ExpressionUUID->"d9b69be9-7f98-442f-a1f9-281ce9d2cba6"],
+Cell[4052, 106, 195, 4, 70, "Input",ExpressionUUID->"2d003d16-0079-4ade-af6f-3212c42fb970"]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,112 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      4436,        103]
+NotebookOptionsPosition[      2888,         77]
+NotebookOutlinePosition[      3205,         91]
+CellTagsIndexPosition[      3162,         88]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["ReconstructBaseGraph", "Title",ExpressionUUID->"fbfec817-8ca1-42c9-85c9-942a5f12beb2"],
+
+Cell["\<\
+ReconstructBaseGraph[total, proj] reconstructs the base graph from a total \
+space graph and projection.\
+\>", "Text",ExpressionUUID->"17b9f20d-c7f2-4f17-aed0-21c9f4f0d613"],
+
+Cell["\<\
+ReconstructBaseGraph[total, proj, opts] passes options to Graph.\
+\>", "Text",ExpressionUUID->"043be0f1-0acb-4263-97d6-c57211327f38"],
+
+Cell["Details", "Section",ExpressionUUID->"98e1d0aa-5991-417e-b8cb-0e457ad9a924"],
+
+Cell["\<\
+The projection proj is an Association mapping total space vertices to base \
+vertices.\
+\>", "Text",ExpressionUUID->"a8c4511d-ee8e-426a-8601-c3e20a24cdb5"],
+
+Cell["\<\
+ReconstructBaseGraph extracts the base graph by projecting edges and removing \
+duplicates and self-loops.\
+\>", "Text",ExpressionUUID->"f0c698a3-b75c-4f1c-bc4d-96b4447fe740"],
+
+Cell["\<\
+The reconstructed base graph is isomorphic to the original base graph used to \
+create the fibration.\
+\>", "Text",ExpressionUUID->"5976bcca-5eb6-4e27-bf32-e98405bb3f21"],
+
+Cell["Examples", "Section",ExpressionUUID->"7ccc54e9-edee-496a-8ab5-42c7ad9dc840"],
+
+Cell["Needs[\"WolframInstitute`InfraGaugeTheory`\"]", "Input",ExpressionUUID->"3d47199d-67db-4aca-8816-c964d8925302"],
+
+Cell["Reconstruct the base from a fibration over a cycle:", "Text",ExpressionUUID->"98f6f42c-0c19-4167-b8d2-88e18bffce8e"],
+
+Cell["\<\
+{total, proj} = RandomGraphFibration[CycleGraph[5], \"VerticalVertices\" -> 3];
+base = ReconstructBaseGraph[total, proj];
+IsomorphicGraphQ[base, CycleGraph[5]]\
+\>", "Input",ExpressionUUID->"c7276ff8-73d1-49a6-9e6b-8fc8ef41cde1"],
+
+Cell["Reconstruct from a grid fibration:", "Text",ExpressionUUID->"f349ae54-85be-4240-9e50-68ce6aec2bfb"],
+
+Cell["\<\
+{total, proj} = RandomGraphFibration[GridGraph[{3, 3}], \"VerticalVertices\" \
+-> 2];
+base = ReconstructBaseGraph[total, proj];
+{VertexCount[base], EdgeCount[base]}\
+\>", "Input",ExpressionUUID->"bb590b60-fb64-437e-9a84-6e8df57f1470"],
+
+Cell["Pass graph options:", "Text",ExpressionUUID->"5841afb4-b282-4d84-a934-8d78f39f6968"],
+
+Cell["\<\
+{total, proj} = RandomGraphFibration[CycleGraph[5], \"VerticalVertices\" -> 3];
+ReconstructBaseGraph[total, proj, GraphLayout -> \"CircularEmbedding\", \
+VertexLabels -> Automatic]\
+\>", "Input",ExpressionUUID->"480ca2c7-fadf-4072-b7e7-3bc1ccb6009e"]
+},
+FrontEndVersion->"14.3 for Mac OS X ARM (64-bit) (July 8, 2025)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"9a65f32f-e27e-4297-aaf7-d4b8f9f060c2"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[554, 20, 92, 0, 70, "Title",ExpressionUUID->"fbfec817-8ca1-42c9-85c9-942a5f12beb2"],
+Cell[649, 22, 183, 3, 70, "Text",ExpressionUUID->"17b9f20d-c7f2-4f17-aed0-21c9f4f0d613"],
+Cell[835, 27, 143, 2, 70, "Text",ExpressionUUID->"043be0f1-0acb-4263-97d6-c57211327f38"],
+Cell[981, 31, 81, 0, 70, "Section",ExpressionUUID->"98e1d0aa-5991-417e-b8cb-0e457ad9a924"],
+Cell[1065, 33, 165, 3, 70, "Text",ExpressionUUID->"a8c4511d-ee8e-426a-8601-c3e20a24cdb5"],
+Cell[1233, 38, 185, 3, 70, "Text",ExpressionUUID->"f0c698a3-b75c-4f1c-bc4d-96b4447fe740"],
+Cell[1421, 43, 180, 3, 70, "Text",ExpressionUUID->"5976bcca-5eb6-4e27-bf32-e98405bb3f21"],
+Cell[1604, 48, 82, 0, 70, "Section",ExpressionUUID->"7ccc54e9-edee-496a-8ab5-42c7ad9dc840"],
+Cell[1689, 50, 117, 0, 70, "Input",ExpressionUUID->"3d47199d-67db-4aca-8816-c964d8925302"],
+Cell[1809, 52, 122, 0, 70, "Text",ExpressionUUID->"98f6f42c-0c19-4167-b8d2-88e18bffce8e"],
+Cell[1934, 54, 239, 4, 70, "Input",ExpressionUUID->"c7276ff8-73d1-49a6-9e6b-8fc8ef41cde1"],
+Cell[2176, 60, 105, 0, 70, "Text",ExpressionUUID->"f349ae54-85be-4240-9e50-68ce6aec2bfb"],
+Cell[2284, 62, 244, 5, 70, "Input",ExpressionUUID->"bb590b60-fb64-437e-9a84-6e8df57f1470"],
+Cell[2531, 69, 90, 0, 70, "Text",ExpressionUUID->"5841afb4-b282-4d84-a934-8d78f39f6968"],
+Cell[2624, 71, 260, 4, 70, "Input",ExpressionUUID->"480ca2c7-fadf-4072-b7e7-3bc1ccb6009e"]
+}
+]
+*)
+
+(* End of internal cache information *)

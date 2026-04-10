@@ -1,0 +1,119 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      4841,        110]
+NotebookOptionsPosition[      3201,         83]
+NotebookOutlinePosition[      3518,         97]
+CellTagsIndexPosition[      3475,         94]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["ParallelTransport", "Title",ExpressionUUID->"12621411-e0aa-412c-82a8-277261420942"],
+
+Cell["\<\
+ParallelTransport[connection, proj, path] computes parallel transport along a \
+path in the base space.\
+\>", "Text",ExpressionUUID->"300dedfe-987e-49db-a25d-a2e67b1ddbe0"],
+
+Cell["Details", "Section",ExpressionUUID->"522863d1-1707-4404-858b-ee6a9d497380"],
+
+Cell["\<\
+path is a list of base vertices forming a walk in the base graph.\
+\>", "Text",ExpressionUUID->"dbcd754d-5aeb-494f-8489-8660e493d261"],
+
+Cell["\<\
+ParallelTransport returns an Association mapping fiber vertices over the \
+start to fiber vertices over the end.\
+\>", "Text",ExpressionUUID->"ee277afd-d68e-4537-803e-a7d4e07f67d4"],
+
+Cell["\<\
+Transport uses FindHorizontalCurve to lift each fiber element along the base \
+path.\
+\>", "Text",ExpressionUUID->"fc899b72-51be-45f9-9f10-90581b28aab4"],
+
+Cell["\<\
+If a lift fails (no horizontal edge available), that fiber element is omitted \
+from the result.\
+\>", "Text",ExpressionUUID->"9674ad8e-b2f0-4d5d-aefa-f336fa077491"],
+
+Cell["\<\
+For a closed path (loop), transport gives the holonomy permutation of the \
+fiber.\
+\>", "Text",ExpressionUUID->"2ea699ea-d0b3-43a4-92ce-6c6643eadf00"],
+
+Cell["Examples", "Section",ExpressionUUID->"ac7bc3cd-9178-462a-94ef-bc58880b51c1"],
+
+Cell["Needs[\"WolframInstitute`InfraGaugeTheory`\"]", "Input",ExpressionUUID->"2a16569f-a7fa-445f-8f49-f6e36ee54bf6"],
+
+Cell["Transport along a path in a cycle fibration:", "Text",ExpressionUUID->"6110f2b1-7535-45d7-b28d-9b0047f6a023"],
+
+Cell["\<\
+{total, proj} = RandomGraphFibration[CycleGraph[5], \"VerticalVertices\" -> 3];
+conn = RandomConnection[total, proj];
+base = ReconstructBaseGraph[total, proj];
+path = First[FindPath[base, 1, 3, Infinity, 1]];
+ParallelTransport[conn, proj, path]\
+\>", "Input",ExpressionUUID->"53b35406-c5b3-425a-86e5-70ded50306fb"],
+
+Cell["Transport maps fiber over start to fiber over end:", "Text",ExpressionUUID->"73bbd7fb-38b8-44ab-9063-61c4c687d7e3"],
+
+Cell["\<\
+{total, proj} = RandomGraphFibration[CycleGraph[5], \"VerticalVertices\" -> 3];
+conn = RandomConnection[total, proj];
+base = ReconstructBaseGraph[total, proj];
+path = First[FindPath[base, 1, 4, Infinity, 1]];
+transport = ParallelTransport[conn, proj, path];
+{proj /@ Keys[transport] // DeleteDuplicates, proj /@ Values[transport] // \
+DeleteDuplicates}\
+\>", "Input",ExpressionUUID->"67309b3c-104e-4265-a7f1-311ed9f0ee89"],
+
+Cell["Trivial path returns empty association:", "Text",ExpressionUUID->"3bde8502-9b3d-4223-9d0e-670e9444ff93"],
+
+Cell["ParallelTransport[Graph[{}], <||>, {1}]", "Input",ExpressionUUID->"026479ee-2bc6-44b2-be3d-da02814d52a8"]
+},
+FrontEndVersion->"14.3 for Mac OS X ARM (64-bit) (July 8, 2025)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"9a65f32f-e27e-4297-aaf7-d4b8f9f060c2"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[554, 20, 89, 0, 70, "Title",ExpressionUUID->"12621411-e0aa-412c-82a8-277261420942"],
+Cell[646, 22, 182, 3, 70, "Text",ExpressionUUID->"300dedfe-987e-49db-a25d-a2e67b1ddbe0"],
+Cell[831, 27, 81, 0, 70, "Section",ExpressionUUID->"522863d1-1707-4404-858b-ee6a9d497380"],
+Cell[915, 29, 144, 2, 70, "Text",ExpressionUUID->"dbcd754d-5aeb-494f-8489-8660e493d261"],
+Cell[1062, 33, 191, 3, 70, "Text",ExpressionUUID->"ee277afd-d68e-4537-803e-a7d4e07f67d4"],
+Cell[1256, 38, 163, 3, 70, "Text",ExpressionUUID->"fc899b72-51be-45f9-9f10-90581b28aab4"],
+Cell[1422, 43, 175, 3, 70, "Text",ExpressionUUID->"9674ad8e-b2f0-4d5d-aefa-f336fa077491"],
+Cell[1600, 48, 161, 3, 70, "Text",ExpressionUUID->"2ea699ea-d0b3-43a4-92ce-6c6643eadf00"],
+Cell[1764, 53, 82, 0, 70, "Section",ExpressionUUID->"ac7bc3cd-9178-462a-94ef-bc58880b51c1"],
+Cell[1849, 55, 117, 0, 70, "Input",ExpressionUUID->"2a16569f-a7fa-445f-8f49-f6e36ee54bf6"],
+Cell[1969, 57, 115, 0, 70, "Text",ExpressionUUID->"6110f2b1-7535-45d7-b28d-9b0047f6a023"],
+Cell[2087, 59, 324, 6, 70, "Input",ExpressionUUID->"53b35406-c5b3-425a-86e5-70ded50306fb"],
+Cell[2414, 67, 121, 0, 70, "Text",ExpressionUUID->"73bbd7fb-38b8-44ab-9063-61c4c687d7e3"],
+Cell[2538, 69, 432, 8, 70, "Input",ExpressionUUID->"67309b3c-104e-4265-a7f1-311ed9f0ee89"],
+Cell[2973, 79, 110, 0, 70, "Text",ExpressionUUID->"3bde8502-9b3d-4223-9d0e-670e9444ff93"],
+Cell[3086, 81, 111, 0, 70, "Input",ExpressionUUID->"026479ee-2bc6-44b2-be3d-da02814d52a8"]
+}
+]
+*)
+
+(* End of internal cache information *)

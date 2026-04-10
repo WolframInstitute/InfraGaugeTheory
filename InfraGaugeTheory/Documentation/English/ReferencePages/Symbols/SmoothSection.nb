@@ -1,0 +1,124 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      4965,        115]
+NotebookOptionsPosition[      3236,         87]
+NotebookOutlinePosition[      3553,        101]
+CellTagsIndexPosition[      3510,         98]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["SmoothSection", "Title",ExpressionUUID->"e36ccd0e-ba5c-4a9d-9c19-0a5acd9c05af"],
+
+Cell["\<\
+SmoothSection[total, proj, section] extends a partial section by maintaining \
+smoothness.\
+\>", "Text",ExpressionUUID->"0bb87390-481b-4103-8988-aa8ce8a4fde7"],
+
+Cell["\<\
+SmoothSection[total, proj, section, opts] uses options to control the search.\
+\
+\>", "Text",ExpressionUUID->"b79a0d0c-ceff-4544-be69-de8131614499"],
+
+Cell["Details", "Section",ExpressionUUID->"07a5b0db-4d05-478c-b03f-76981a056467"],
+
+Cell["\<\
+A smooth section maps adjacent base vertices to adjacent fiber vertices.\
+\>", "Text",ExpressionUUID->"cb06d566-0696-49e7-9e2e-86ecc1a60ca2"],
+
+Cell["\<\
+SmoothSection takes a partial section (possibly on a single vertex) and \
+extends it outward shell by shell, choosing fiber vertices compatible with \
+previously assigned neighbors.\
+\>", "Text",ExpressionUUID->"4682b94f-a052-48b1-9d42-1b680c220723"],
+
+Cell["Options:", "Text",ExpressionUUID->"77505d93-cef2-4518-86eb-3b4544cf8c7e"],
+
+Cell["\<\
+\"MaxShells\" \\[Rule] Infinity  \\[LongDash]  maximum number of expansion \
+shells\
+\>", "Item",ExpressionUUID->"89288b00-8619-4306-9486-058ee3f8a0f0"],
+
+Cell["\<\
+\"PruneSampleSize\" \\[Rule] Infinity  \\[LongDash]  sample size for pruning \
+valid choices\
+\>", "Item",ExpressionUUID->"868ab35a-3c11-4c39-994d-9c034e8968dc"],
+
+Cell["\<\
+\"PruneShellExtensions\" \\[Rule] Infinity  \\[LongDash]  maximum extensions \
+per shell\
+\>", "Item",ExpressionUUID->"1309e0f3-03f5-4289-86db-3167526ee5fc"],
+
+Cell["\<\
+\"MaxRecursiveBranches\" \\[Rule] Infinity  \\[LongDash]  maximum recursive \
+branches to explore\
+\>", "Item",ExpressionUUID->"423b549e-4e00-4168-8d41-1da08c1560e6"],
+
+Cell["Examples", "Section",ExpressionUUID->"5e2867cb-5b68-4639-b0c9-bfd02c1ae90d"],
+
+Cell["Needs[\"WolframInstitute`InfraGaugeTheory`\"]", "Input",ExpressionUUID->"b6e4e5a0-b050-4ef2-9185-1d3e22b4977e"],
+
+Cell["Extend a single-vertex section to a smooth section:", "Text",ExpressionUUID->"7ba58a8c-af82-4795-b651-208a40772292"],
+
+Cell["\<\
+{total, proj} = RandomGraphFibration[CycleGraph[5], \"VerticalVertices\" -> 3];
+partial = RandomSection[total, proj, {1}];
+extended = SmoothSection[total, proj, partial];
+{Length[extended], SmoothSectionQ[total, proj, extended]}\
+\>", "Input",ExpressionUUID->"9d5a8911-d0e8-4e9a-95f5-fab7d0a303a8"],
+
+Cell["Extend from an empty section:", "Text",ExpressionUUID->"0cb874ed-9c9c-49cb-8c35-6d79e2424aee"],
+
+Cell["\<\
+{total, proj} = RandomGraphFibration[CycleGraph[5], \"VerticalVertices\" -> 3];
+extended = SmoothSection[total, proj, <||>];
+SmoothSectionQ[total, proj, extended]\
+\>", "Input",ExpressionUUID->"737db29c-2869-41e6-8b4e-9723eb499fad"]
+},
+FrontEndVersion->"14.3 for Mac OS X ARM (64-bit) (July 8, 2025)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"9a65f32f-e27e-4297-aaf7-d4b8f9f060c2"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[554, 20, 85, 0, 70, "Title",ExpressionUUID->"e36ccd0e-ba5c-4a9d-9c19-0a5acd9c05af"],
+Cell[642, 22, 169, 3, 70, "Text",ExpressionUUID->"0bb87390-481b-4103-8988-aa8ce8a4fde7"],
+Cell[814, 27, 158, 3, 70, "Text",ExpressionUUID->"b79a0d0c-ceff-4544-be69-de8131614499"],
+Cell[975, 32, 81, 0, 70, "Section",ExpressionUUID->"07a5b0db-4d05-478c-b03f-76981a056467"],
+Cell[1059, 34, 151, 2, 70, "Text",ExpressionUUID->"cb06d566-0696-49e7-9e2e-86ecc1a60ca2"],
+Cell[1213, 38, 260, 4, 70, "Text",ExpressionUUID->"4682b94f-a052-48b1-9d42-1b680c220723"],
+Cell[1476, 44, 79, 0, 70, "Text",ExpressionUUID->"77505d93-cef2-4518-86eb-3b4544cf8c7e"],
+Cell[1558, 46, 162, 3, 70, "Item",ExpressionUUID->"89288b00-8619-4306-9486-058ee3f8a0f0"],
+Cell[1723, 51, 171, 3, 70, "Item",ExpressionUUID->"868ab35a-3c11-4c39-994d-9c034e8968dc"],
+Cell[1897, 56, 167, 3, 70, "Item",ExpressionUUID->"1309e0f3-03f5-4289-86db-3167526ee5fc"],
+Cell[2067, 61, 176, 3, 70, "Item",ExpressionUUID->"423b549e-4e00-4168-8d41-1da08c1560e6"],
+Cell[2246, 66, 82, 0, 70, "Section",ExpressionUUID->"5e2867cb-5b68-4639-b0c9-bfd02c1ae90d"],
+Cell[2331, 68, 117, 0, 70, "Input",ExpressionUUID->"b6e4e5a0-b050-4ef2-9185-1d3e22b4977e"],
+Cell[2451, 70, 122, 0, 70, "Text",ExpressionUUID->"7ba58a8c-af82-4795-b651-208a40772292"],
+Cell[2576, 72, 308, 5, 70, "Input",ExpressionUUID->"9d5a8911-d0e8-4e9a-95f5-fab7d0a303a8"],
+Cell[2887, 79, 100, 0, 70, "Text",ExpressionUUID->"0cb874ed-9c9c-49cb-8c35-6d79e2424aee"],
+Cell[2990, 81, 242, 4, 70, "Input",ExpressionUUID->"737db29c-2869-41e6-8b4e-9723eb499fad"]
+}
+]
+*)
+
+(* End of internal cache information *)

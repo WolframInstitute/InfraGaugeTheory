@@ -1,0 +1,114 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      4647,        105]
+NotebookOptionsPosition[      3007,         78]
+NotebookOutlinePosition[      3324,         92]
+CellTagsIndexPosition[      3281,         89]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["RandomSection", "Title",ExpressionUUID->"c8754e68-97f4-4ad1-92a1-1074402624c3"],
+
+Cell["\<\
+RandomSection[total, proj] generates a random section of a fiber bundle.\
+\>", "Text",ExpressionUUID->"1e0975c6-8673-4c2f-8c77-cc491a6e38c7"],
+
+Cell["\<\
+RandomSection[total, proj, domain] generates a section restricted to the \
+given base vertices.\
+\>", "Text",ExpressionUUID->"0ba85a38-deb8-4153-8c29-10cd86b74ed5"],
+
+Cell["Details", "Section",ExpressionUUID->"bc150692-c429-4f3d-a492-3c11ee201502"],
+
+Cell["\<\
+A section assigns to each base vertex a fiber vertex projecting to it: a \
+right inverse of proj.\
+\>", "Text",ExpressionUUID->"0a8ff315-7f5d-47f7-ab90-f230aa084411"],
+
+Cell["RandomSection picks uniformly at random from each fiber.", "Text",ExpressionUUID->"6a20a1bd-7b16-422f-b565-32d2bea5ee15"],
+
+Cell["\<\
+A random section is not necessarily smooth (adjacent base vertices may map to \
+non-adjacent fiber vertices).\
+\>", "Text",ExpressionUUID->"96dc86a5-b115-4604-bdf2-23934c3521c4"],
+
+Cell["\<\
+Use SmoothSectionQ to test smoothness. Use SmoothSection to extend a partial \
+section smoothly.\
+\>", "Text",ExpressionUUID->"dc7bbe85-b30e-4f52-9657-122ab584d9a0"],
+
+Cell["Examples", "Section",ExpressionUUID->"487bbd5b-d168-42fe-8c91-4cafeb4ff460"],
+
+Cell["Needs[\"WolframInstitute`InfraGaugeTheory`\"]", "Input",ExpressionUUID->"8d4b4c19-65f4-418a-b206-c67f6200c6c2"],
+
+Cell["Random section over a cycle fibration:", "Text",ExpressionUUID->"728eec39-9e41-4a7a-86b6-713197beaae3"],
+
+Cell["\<\
+{total, proj} = RandomGraphFibration[CycleGraph[5], \"VerticalVertices\" -> 3];
+section = RandomSection[total, proj];
+{Length[section], AllTrue[Normal[section], rule |-> proj[Last[rule]] === \
+First[rule]]}\
+\>", "Input",ExpressionUUID->"279c5c4d-2f54-4b58-8f4c-cf0305936c17"],
+
+Cell["Partial section on a subset of base vertices:", "Text",ExpressionUUID->"53c9a862-8795-45e8-a816-f76fb8bc2a03"],
+
+Cell["\<\
+{total, proj} = RandomGraphFibration[CycleGraph[5], \"VerticalVertices\" -> 3];
+RandomSection[total, proj, {1, 2, 3}]\
+\>", "Input",ExpressionUUID->"008d04ac-6872-4eca-ba43-be3baccf32e3"],
+
+Cell["Test if a random section is smooth:", "Text",ExpressionUUID->"7e115034-acfe-47d4-89c2-72a6cdfec22e"],
+
+Cell["\<\
+{total, proj} = RandomGraphFibration[CycleGraph[5], \"VerticalVertices\" -> 3];
+section = RandomSection[total, proj];
+SmoothSectionQ[total, proj, section]\
+\>", "Input",ExpressionUUID->"7bdf0402-eb48-485f-85f3-2879c77505f1"]
+},
+FrontEndVersion->"14.3 for Mac OS X ARM (64-bit) (July 8, 2025)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"9a65f32f-e27e-4297-aaf7-d4b8f9f060c2"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[554, 20, 85, 0, 70, "Title",ExpressionUUID->"c8754e68-97f4-4ad1-92a1-1074402624c3"],
+Cell[642, 22, 151, 2, 70, "Text",ExpressionUUID->"1e0975c6-8673-4c2f-8c77-cc491a6e38c7"],
+Cell[796, 26, 174, 3, 70, "Text",ExpressionUUID->"0ba85a38-deb8-4153-8c29-10cd86b74ed5"],
+Cell[973, 31, 81, 0, 70, "Section",ExpressionUUID->"bc150692-c429-4f3d-a492-3c11ee201502"],
+Cell[1057, 33, 176, 3, 70, "Text",ExpressionUUID->"0a8ff315-7f5d-47f7-ab90-f230aa084411"],
+Cell[1236, 38, 127, 0, 70, "Text",ExpressionUUID->"6a20a1bd-7b16-422f-b565-32d2bea5ee15"],
+Cell[1366, 40, 188, 3, 70, "Text",ExpressionUUID->"96dc86a5-b115-4604-bdf2-23934c3521c4"],
+Cell[1557, 45, 175, 3, 70, "Text",ExpressionUUID->"dc7bbe85-b30e-4f52-9657-122ab584d9a0"],
+Cell[1735, 50, 82, 0, 70, "Section",ExpressionUUID->"487bbd5b-d168-42fe-8c91-4cafeb4ff460"],
+Cell[1820, 52, 117, 0, 70, "Input",ExpressionUUID->"8d4b4c19-65f4-418a-b206-c67f6200c6c2"],
+Cell[1940, 54, 109, 0, 70, "Text",ExpressionUUID->"728eec39-9e41-4a7a-86b6-713197beaae3"],
+Cell[2052, 56, 286, 5, 70, "Input",ExpressionUUID->"279c5c4d-2f54-4b58-8f4c-cf0305936c17"],
+Cell[2341, 63, 116, 0, 70, "Text",ExpressionUUID->"53c9a862-8795-45e8-a816-f76fb8bc2a03"],
+Cell[2460, 65, 197, 3, 70, "Input",ExpressionUUID->"008d04ac-6872-4eca-ba43-be3baccf32e3"],
+Cell[2660, 70, 106, 0, 70, "Text",ExpressionUUID->"7e115034-acfe-47d4-89c2-72a6cdfec22e"],
+Cell[2769, 72, 234, 4, 70, "Input",ExpressionUUID->"7bdf0402-eb48-485f-85f3-2879c77505f1"]
+}
+]
+*)
+
+(* End of internal cache information *)

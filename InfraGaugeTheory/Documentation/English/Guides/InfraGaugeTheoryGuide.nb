@@ -1,0 +1,160 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      7115,        151]
+NotebookOptionsPosition[      4378,        112]
+NotebookOutlinePosition[      4695,        126]
+CellTagsIndexPosition[      4652,        123]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["InfraGaugeTheory", "Title",ExpressionUUID->"61c4821b-9655-4999-8c90-60b3851d7e43"],
+
+Cell["\<\
+Discrete gauge theory on graphs: fiber bundles, fibrations, connections, \
+holonomy, and visualization.\
+\>", "Text",ExpressionUUID->"acd355b4-bd4c-4f65-a694-0658c4417d2a"],
+
+Cell["Fibrations", "Section",ExpressionUUID->"77f91d45-0d4f-42f8-a72b-b9b112c9b389"],
+
+Cell["\<\
+RandomGraphFibration  \\[LongDash]  create a random fiber bundle over a base \
+graph\
+\>", "Item",ExpressionUUID->"04c2ca54-aa30-472c-859d-b7ff96d5c65d"],
+
+Cell["\<\
+ReconstructBaseGraph  \\[LongDash]  recover the base graph from total space \
+and projection\
+\>", "Item",ExpressionUUID->"f1d20d53-a9e7-47f1-b710-ad992c1ceb50"],
+
+Cell["Sections", "Section",ExpressionUUID->"7f1cbb9c-cc06-441f-b072-36c0e1d044ae"],
+
+Cell["RandomSection  \\[LongDash]  random section of a fiber bundle", "Item",ExpressionUUID->"38bffb53-6a46-447b-87e3-88574377ce0d"],
+
+Cell["\<\
+SmoothSectionQ  \\[LongDash]  test whether a section respects fibration \
+structure\
+\>", "Item",ExpressionUUID->"e8f77fc1-48f8-4afc-a4fb-a414fcd673e3"],
+
+Cell["\<\
+SmoothSection  \\[LongDash]  extend a partial section smoothly\
+\>", "Item",ExpressionUUID->"a66845ea-1c11-4984-93ef-390e04dea174"],
+
+Cell["Connections", "Section",ExpressionUUID->"df62f760-a282-4e3e-ab95-9014e78b2bc7"],
+
+Cell["UniqueLiftQ  \\[LongDash]  check unique lifting property", "Item",ExpressionUUID->"8ec1ca49-d3db-4a87-82db-1a015ad5291a"],
+
+Cell["\<\
+ConnectionQ  \\[LongDash]  verify a valid connection on a fibration\
+\>", "Item",ExpressionUUID->"451d6d63-8dde-4421-8392-8ad28967185b"],
+
+Cell["RandomConnection  \\[LongDash]  generate a random connection", "Item",ExpressionUUID->"068c7e48-21d1-44c3-9e5e-046dd340ff33"],
+
+Cell["\<\
+FindHorizontalCurve  \\[LongDash]  horizontal lift of a base path\
+\>", "Item",ExpressionUUID->"506f187b-0c7f-4eef-b164-4661dc820d01"],
+
+Cell["\<\
+ParallelTransport  \\[LongDash]  parallel transport along a base path\
+\>", "Item",ExpressionUUID->"0704c68c-288f-4380-8942-760ba6be6a23"],
+
+Cell["Visualization", "Section",ExpressionUUID->"8aee46a2-f011-4642-a3b0-f91fb9a48c4d"],
+
+Cell["\<\
+FibrationGraph3D  \\[LongDash]  3D visualization of a fibration with layers\
+\>", "Item",ExpressionUUID->"2be9dfed-6a3d-4e79-9fce-0b2ce9299392"],
+
+Cell["\<\
+CircularFiberGraph  \\[LongDash]  circular fiber layout visualization\
+\>", "Item",ExpressionUUID->"c0cc5dd5-831c-4b67-9fe1-bdae39734c72"],
+
+Cell["\<\
+HighlightFibers  \\[LongDash]  highlight fiber structure on a graph\
+\>", "Item",ExpressionUUID->"d8e7da6a-7a02-4547-b0f7-ef7fbc924eb3"],
+
+Cell["FibrationViewer  \\[LongDash]  interactive fibration explorer", "Item",ExpressionUUID->"9a14693d-55ed-4342-ad95-3066de018bea"],
+
+Cell["SectionViewer  \\[LongDash]  interactive section viewer", "Item",ExpressionUUID->"7e502e6f-56aa-48a4-a25b-bbc6fba6b10d"],
+
+Cell["ConnectionViewer  \\[LongDash]  interactive connection viewer", "Item",ExpressionUUID->"45a45f0b-72e4-4c6b-afb5-ba78b840c5cf"],
+
+Cell["\<\
+RandomFibrationViewer  \\[LongDash]  random fibration explorer with sliders\
+\>", "Item",ExpressionUUID->"7da80bce-b48e-4a07-bbe2-c825a24f612b"],
+
+Cell["Utilities", "Section",ExpressionUUID->"3650586c-b88a-4a97-ab01-6afd5d466397"],
+
+Cell["\<\
+HausdorffDistance  \\[LongDash]  Hausdorff distance between vertex sets\
+\>", "Item",ExpressionUUID->"b6c098f6-fe9d-400e-a2f0-ed58697cdffc"],
+
+Cell["\<\
+FrechetDistance  \\[LongDash]  Fr\\[EAcute]chet distance between vertex sets\
+\>", "Item",ExpressionUUID->"f9f29f40-4c1a-45ac-b380-620ffed11c08"],
+
+Cell["\<\
+Separation  \\[LongDash]  minimum distance between vertex sets\
+\>", "Item",ExpressionUUID->"6bac26bf-3dbb-481e-8640-104d05d47a24"],
+
+Cell["\<\
+GeodesicSubgraph  \\[LongDash]  extract geodesic paths as subgraph\
+\>", "Item",ExpressionUUID->"cad609b9-5efe-47ef-b954-1bbfdb63affb"]
+},
+FrontEndVersion->"14.3 for Mac OS X ARM (64-bit) (July 8, 2025)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"9a65f32f-e27e-4297-aaf7-d4b8f9f060c2"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[554, 20, 88, 0, 70, "Title",ExpressionUUID->"61c4821b-9655-4999-8c90-60b3851d7e43"],
+Cell[645, 22, 182, 3, 70, "Text",ExpressionUUID->"acd355b4-bd4c-4f65-a694-0658c4417d2a"],
+Cell[830, 27, 84, 0, 70, "Section",ExpressionUUID->"77f91d45-0d4f-42f8-a72b-b9b112c9b389"],
+Cell[917, 29, 163, 3, 70, "Item",ExpressionUUID->"04c2ca54-aa30-472c-859d-b7ff96d5c65d"],
+Cell[1083, 34, 171, 3, 70, "Item",ExpressionUUID->"f1d20d53-a9e7-47f1-b710-ad992c1ceb50"],
+Cell[1257, 39, 82, 0, 70, "Section",ExpressionUUID->"7f1cbb9c-cc06-441f-b072-36c0e1d044ae"],
+Cell[1342, 41, 132, 0, 70, "Item",ExpressionUUID->"38bffb53-6a46-447b-87e3-88574377ce0d"],
+Cell[1477, 43, 162, 3, 70, "Item",ExpressionUUID->"e8f77fc1-48f8-4afc-a4fb-a414fcd673e3"],
+Cell[1642, 48, 141, 2, 70, "Item",ExpressionUUID->"a66845ea-1c11-4984-93ef-390e04dea174"],
+Cell[1786, 52, 85, 0, 70, "Section",ExpressionUUID->"df62f760-a282-4e3e-ab95-9014e78b2bc7"],
+Cell[1874, 54, 127, 0, 70, "Item",ExpressionUUID->"8ec1ca49-d3db-4a87-82db-1a015ad5291a"],
+Cell[2004, 56, 146, 2, 70, "Item",ExpressionUUID->"451d6d63-8dde-4421-8392-8ad28967185b"],
+Cell[2153, 60, 131, 0, 70, "Item",ExpressionUUID->"068c7e48-21d1-44c3-9e5e-046dd340ff33"],
+Cell[2287, 62, 144, 2, 70, "Item",ExpressionUUID->"506f187b-0c7f-4eef-b164-4661dc820d01"],
+Cell[2434, 66, 148, 2, 70, "Item",ExpressionUUID->"0704c68c-288f-4380-8942-760ba6be6a23"],
+Cell[2585, 70, 87, 0, 70, "Section",ExpressionUUID->"8aee46a2-f011-4642-a3b0-f91fb9a48c4d"],
+Cell[2675, 72, 154, 2, 70, "Item",ExpressionUUID->"2be9dfed-6a3d-4e79-9fce-0b2ce9299392"],
+Cell[2832, 76, 148, 2, 70, "Item",ExpressionUUID->"c0cc5dd5-831c-4b67-9fe1-bdae39734c72"],
+Cell[2983, 80, 146, 2, 70, "Item",ExpressionUUID->"d8e7da6a-7a02-4547-b0f7-ef7fbc924eb3"],
+Cell[3132, 84, 132, 0, 70, "Item",ExpressionUUID->"9a14693d-55ed-4342-ad95-3066de018bea"],
+Cell[3267, 86, 126, 0, 70, "Item",ExpressionUUID->"7e502e6f-56aa-48a4-a25b-bbc6fba6b10d"],
+Cell[3396, 88, 132, 0, 70, "Item",ExpressionUUID->"45a45f0b-72e4-4c6b-afb5-ba78b840c5cf"],
+Cell[3531, 90, 154, 2, 70, "Item",ExpressionUUID->"7da80bce-b48e-4a07-bbe2-c825a24f612b"],
+Cell[3688, 94, 83, 0, 70, "Section",ExpressionUUID->"3650586c-b88a-4a97-ab01-6afd5d466397"],
+Cell[3774, 96, 150, 2, 70, "Item",ExpressionUUID->"b6c098f6-fe9d-400e-a2f0-ed58697cdffc"],
+Cell[3927, 100, 155, 2, 70, "Item",ExpressionUUID->"f9f29f40-4c1a-45ac-b380-620ffed11c08"],
+Cell[4085, 104, 141, 2, 70, "Item",ExpressionUUID->"6bac26bf-3dbb-481e-8640-104d05d47a24"],
+Cell[4229, 108, 145, 2, 70, "Item",ExpressionUUID->"cad609b9-5efe-47ef-b954-1bbfdb63affb"]
+}
+]
+*)
+
+(* End of internal cache information *)
