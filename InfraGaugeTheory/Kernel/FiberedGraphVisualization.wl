@@ -113,19 +113,9 @@ circularMethod[total_Graph, proj_Association, section_Association, connection_, 
       MemberQ[sectionVerts, #[[1]]] && MemberQ[sectionVerts, #[[2]]] &];
     connEdges = If[connection === None, {}, EdgeList[connection]];
 
-    vertexStyles = Join[
-      If[Length[sectionVerts] > 0,
-        Map[# -> OptionValue["SectionVertexStyle"] &, sectionVerts],
-        {}
-      ],
-      If[connection === None,
-        Flatten[KeyValueMap[
-          {baseVert, fiberVerts} |->
-            Map[# -> fiberColors[baseVert] &,
-              Complement[fiberVerts, sectionVerts]],
-          fibers]],
-        {}
-      ]
+    vertexStyles = If[Length[sectionVerts] > 0,
+      Map[# -> OptionValue["SectionVertexStyle"] &, sectionVerts],
+      {}
     ];
 
     edgeStyles = With[{
