@@ -2,7 +2,7 @@ Package["WolframInstitute`InfraGaugeTheory`"]
 
 PackageExport["VisualizeFiberedGraph"]
 
-VisualizeFiberedGraph::usage = "VisualizeFiberedGraph[total, proj] visualizes a fibered graph. Optional positional arguments: a section (Association) and/or a connection (Graph), in any order, auto-detected by type. Method -> \"CircularFiber\" | \"3DFiber\" | \"HighlightFiber\".";
+VisualizeFiberedGraph::usage = "VisualizeFiberedGraph[total, proj] visualizes a fibered graph. Optional positional arguments: a section (Association) and/or a connection (Graph), in any order, auto-detected by type. Method -> \"CircularFiber\" | \"3DFiber\" | \"HighlightFiber\". Option \"BaseVertexCoordinates\" -> Association overrides the default base embedding with explicit coordinates keyed by base vertex.";
 
 (* ========================= VisualizeFiberedGraph ========================= *)
 
@@ -21,6 +21,7 @@ Options[VisualizeFiberedGraph] = {
   "FiberOpacity" -> 0.3,
   "FiberColorFunction" -> (Blend[{Pink, Red, Darker[Red]}, #] &),
   "BaseGraphLayout" -> "SpringElectricalEmbedding",
+  "BaseVertexCoordinates" -> Automatic,
   "FiberWidth" -> 0.2,
   "FiberHeight" -> 1,
   "FiberVertexStyle" -> Automatic
@@ -67,11 +68,13 @@ circularMethod[total_Graph, proj_Association, section_Association, connection_, 
     dim = OptionValue["Dimension"];
     colorScheme = OptionValue["ColorScheme"];
 
-    baseCoords = If[dim == 2,
-      AssociationThread[VertexList[base], GraphEmbedding[base]],
-      AssociationThread[VertexList[base],
-        GraphEmbedding[base, Dimension -> 3]]
-    ];
+    baseCoords = Replace[OptionValue["BaseVertexCoordinates"], {
+      Automatic :> If[dim == 2,
+        AssociationThread[VertexList[base], GraphEmbedding[base]],
+        AssociationThread[VertexList[base], GraphEmbedding[base, Dimension -> 3]]
+      ],
+      assoc_Association :> assoc
+    }];
 
     radius = Replace[OptionValue["FiberRadius"],
       Automatic :>
