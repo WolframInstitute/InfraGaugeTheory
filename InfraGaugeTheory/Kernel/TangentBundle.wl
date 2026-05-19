@@ -2,7 +2,6 @@ Package["WolframInstitute`InfraGaugeTheory`"]
 
 PackageExport["GraphTangentBundle"]
 PackageExport["TangentFiberedGraph"]
-PackageExport["ZeroSection"]
 
 Options[ GraphTangentBundle ] = { "Radius" -> 1 };
 
@@ -33,7 +32,7 @@ GraphTangentBundle[ g_Graph, opts : OptionsPattern[] ] :=
               UndirectedEdge[ { source, # }, { target, # } ] & /@
                 Intersection[ sourceVerts, targetVerts ],
               Select[
-                Flatten[ Outer[ UndirectedEdge[ { source, #1 }, { target, #2 } ] &, sourceVerts, targetVerts ], 1 ],
+                Flatten[ Outer[ UndirectedEdge[ { source, #1 }, { target, #2 } ] &, sourceVerts, targetVerts, 1 ], 1 ],
                 edge |-> EdgeQ[ g, UndirectedEdge[ edge[[ 1, 2 ]], edge[[ 2, 2 ]] ] ]
               ]
             }, 1 ]
@@ -46,9 +45,6 @@ GraphTangentBundle[ g_Graph, opts : OptionsPattern[] ] :=
     projection = Association @ Map[ # -> #[[ 1 ]] &, allVertices ];
     { Graph[ allVertices, Join[ verticalEdges, horizontalEdges ] ], projection }
   ]
-
-ZeroSection[ g_Graph ] :=
-  Association @ Map[ vertex |-> vertex -> { vertex, vertex }, VertexList[ g ] ]
 
 Options[ TangentFiberedGraph ] = { "Radius" -> 1 };
 
@@ -79,7 +75,7 @@ TangentFiberedGraph[ total_Graph, proj_Association, opts : OptionsPattern[] ] :=
               UndirectedEdge[ { source, # }, { target, # } ] & /@
                 Intersection[ sourceVerts, targetVerts ],
               Select[
-                Flatten[ Outer[ UndirectedEdge[ { source, #1 }, { target, #2 } ] &, sourceVerts, targetVerts ], 1 ],
+                Flatten[ Outer[ UndirectedEdge[ { source, #1 }, { target, #2 } ] &, sourceVerts, targetVerts, 1 ], 1 ],
                 edge |-> EdgeQ[ total, UndirectedEdge[ edge[[ 1, 2 ]], edge[[ 2, 2 ]] ] ]
               ]
             }, 1 ]

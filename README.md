@@ -17,6 +17,7 @@ We also clarify the relation to lattice gauge theory and to "mesoscale" models t
 - extracting weights on the moduli space of connections from properties of the rewriting system
 - computing quantum corrections via path integration
 - investigating whether hyperedges and n-ary relations play a natural role
+- lifting the substrate to a **fibered graph** with a discrete connection, defining a combinatorial curvature 2-form via face holonomy, discretizing the Yang-Mills equation and the Lorentz-force trajectory of a charged particle, and recovering electromagnetism (U(1) gauge theory) and Levi-Civita curvature in the appropriate special cases
 
 ## ✨ Usage
 

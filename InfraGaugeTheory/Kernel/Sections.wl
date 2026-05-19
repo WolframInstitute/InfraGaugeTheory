@@ -3,6 +3,8 @@ Package["WolframInstitute`InfraGaugeTheory`"]
 PackageExport["RandomSection"]
 PackageExport["SmoothSectionQ"]
 PackageExport["SmoothSectionExtension"]
+PackageExport["FindZeroSection"]
+PackageExport["FindCanonicalSection"]
 
 RandomSection::usage = "RandomSection[total, proj, domain] generates a random section of a fibered graph.";
 SmoothSectionQ::usage = "SmoothSectionQ[total, proj, section, domain] tests whether a section respects the fibered graph structure.";
@@ -95,3 +97,32 @@ SmoothSectionExtension[total_Graph, proj_Association, section_Association, opts 
     recurseShells[section, 1];
     bestSoFar
   ];
+
+(* ========================= FindZeroSection ========================= *)
+
+FindZeroSection[ total_Graph, proj_Association ] :=
+  Module[ { baseVertices, fibers, section },
+    baseVertices = DeleteDuplicates @ Values @ proj;
+    fibers = GroupBy[ Normal @ proj, Last -> First ];
+    section = AssociationMap[
+      baseVertex |-> FirstCase[ fibers[ baseVertex ], { baseVertex, baseVertex }, Missing[ "NoZero" ] ],
+      baseVertices
+    ];
+    If[ AnyTrue[ section, MissingQ ], $Failed, section ]
+  ]
+
+(* ========================= FindCanonicalSection ========================= *)
+
+FindCanonicalSection[ total_Graph, proj_Association ] :=
+  Module[ { ttg, ttgVertexSet, section },
+    If[ !AllTrue[ VertexList[ total ], ListQ ], Return[ $Failed, Module ] ];
+    ttg = First @ GraphTangentBundle[ total ];
+    ttgVertexSet = Association @ Thread[ VertexList[ ttg ] -> True ];
+    section = AssociationMap[
+      vertex |-> With[ { canonical = { vertex, Reverse[ vertex ] } },
+        If[ TrueQ @ ttgVertexSet[ canonical ], canonical, Missing[ "NoCanonical" ] ]
+      ],
+      VertexList[ total ]
+    ];
+    If[ AnyTrue[ section, MissingQ ], $Failed, section ]
+  ]
