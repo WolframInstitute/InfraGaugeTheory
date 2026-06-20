@@ -23,7 +23,7 @@ Options[ExponentialCoordinates] = {
 ExponentialCoordinates[g_, v_, opts : OptionsPattern[]] :=
   Module[{neighborhood, format, vertices, radius},
     radius = OptionValue["Radius"];
-    neighborhood = NeighborhoodGraph[g, v, radius];
+    neighborhood = If[radius === Infinity, g, NeighborhoodGraph[g, v, radius]];
     format = OptionValue["FormatCoordinate"];
     vertices = VertexList[neighborhood];
     Association @ Map[

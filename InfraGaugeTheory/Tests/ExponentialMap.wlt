@@ -16,9 +16,9 @@ VerificationTest[
 
 VerificationTest[
     coords = ExponentialCoordinates[ PathGraph[ { 1, 2, 3, 4 } ], 1 ];
-    Length[ coords ] === 4 && AllTrue[ Values[ coords ], NumericQ[ # ] || # === 0 & ],
+    Length[ coords ] === 4 && AllTrue[ Values[ coords ], # === 0 || ! FreeQ[ #, DirectedEdge ] & ],
     True,
-    TestID -> "ExponentialCoordinates-AllNumeric"
+    TestID -> "ExponentialCoordinates-WellFormedVectors"
 ]
 
 VerificationTest[
@@ -30,7 +30,7 @@ VerificationTest[
 
 VerificationTest[
     c = ExponentialCoordinates[ PathGraph[ { 1, 2, 3 } ], 1, 2 ];
-    NumericQ[ c ] || c === 0,
+    c === 0 || ! FreeQ[ c, DirectedEdge ],
     True,
     TestID -> "ExponentialCoordinates-SingleTarget"
 ]

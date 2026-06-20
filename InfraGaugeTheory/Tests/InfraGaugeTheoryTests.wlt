@@ -6,7 +6,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-    NameQ["WolframInstitute`InfraGaugeTheory`RandomGraphFibration"],
+    NameQ["WolframInstitute`InfraGaugeTheory`RandomFiberedGraph"],
     True,
     TestID -> "RandomGraphFibrationDefined"
 ]

@@ -45,7 +45,7 @@ VerificationTest[
 
 VerificationTest[
     {total, proj} = RandomFiberedGraph[CycleGraph[5], "VerticalVertices" -> 3, "IsomorphicFibers" -> True];
-    IsomorphicFibersQ[total, proj, "CheckIsomorphism" -> False],
+    IsomorphicFibersQ[total, proj, "IsomorphismFunction" -> (VertexCount[#1] === VertexCount[#2] &)],
     True,
     TestID -> "RandomFiberedGraph-IsomorphicFibers-SameSize"
 ]
@@ -111,7 +111,7 @@ VerificationTest[
 VerificationTest[
     total = Graph[{1, 2, 3, 4}, {UndirectedEdge[1, 2]}];
     proj = Association[1 -> "a", 2 -> "a", 3 -> "b", 4 -> "b"];
-    IsomorphicFibersQ[total, proj, "CheckIsomorphism" -> False],
+    IsomorphicFibersQ[total, proj, "IsomorphismFunction" -> (VertexCount[#1] === VertexCount[#2] &)],
     True,
     TestID -> "IsomorphicFibersQ-SameVertexCountOnly"
 ]
