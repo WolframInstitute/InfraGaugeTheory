@@ -26,6 +26,12 @@ PacletDirectoryLoad["/path/to/InfraGaugeTheory"]
 Needs["WolframInstitute`InfraGaugeTheory`"]
 ```
 
+## 🧪 Dev notebook
+
+A full tour of the paclet — a reference card of every exported function, then worked examples: random fibrations, the torus bundle, the three visualizers, sections (smooth vs not), connections / parallel transport / holonomy (cylinder vs Möbius), the tangent bundle, and the metric Levi-Civita connection (curved octahedron vs flat grid). Pictures are embedded as bitmaps so it renders without re-evaluation:
+
+**[Dev notebook — Pavel](https://www.wolframcloud.com/obj/hajek_pavel/InfraGaugeTheory/DevTest-Pavel.nb)** (runs on the Wolfram Cloud).
+
 ## ∴ License
 
 MIT
