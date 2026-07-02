@@ -19,7 +19,6 @@ We also clarify the relation to lattice gauge theory and to "mesoscale" models t
 - extracting weights on the moduli space of connections from properties of the rewriting system
 - computing quantum corrections via path integration
 - investigating whether hyperedges and n-ary relations play a natural role
-- lifting the substrate to a **fibered graph** with a discrete connection, defining a combinatorial curvature 2-form via face holonomy, discretizing the Yang-Mills equation and the Lorentz-force trajectory of a charged particle, and recovering electromagnetism (U(1) gauge theory) and Levi-Civita curvature in the appropriate special cases
 
 ## ✨ Usage
 
@@ -30,12 +29,8 @@ PacletInstall["https://www.wolframcloud.com/obj/hajek_pavel/InfraGaugeTheory.pac
 Needs["WolframInstitute`InfraGaugeTheory`"]
 ```
 
-## 🧪 Dev notebook
+Explore the paclet in the **[LLM-generated presentation notebook](https://www.wolframcloud.com/obj/hajek_pavel/InfraGaugeTheory/Presentation.nb)** (runs on the Wolfram Cloud).
 
-A full tour of the paclet — a reference card of every exported function, then worked examples: random fibrations, the torus bundle, the three visualizers, sections (smooth vs not), connections / parallel transport / holonomy (cylinder vs Möbius), the tangent bundle, and the metric Levi-Civita connection (curved octahedron vs flat grid). Pictures are embedded as bitmaps so it renders without re-evaluation:
-
-**[Dev notebook — Pavel](https://www.wolframcloud.com/obj/hajek_pavel/InfraGaugeTheory/DevTest-Pavel.nb)** (runs on the Wolfram Cloud).
-
-## ∴ License
+## ⚖️ License
 
 MIT
