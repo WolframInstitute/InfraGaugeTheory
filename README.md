@@ -31,6 +31,8 @@ Needs["WolframInstitute`InfraGaugeTheory`"]
 
 Explore the paclet in the **[LLM-generated presentation notebook](https://www.wolframcloud.com/obj/hajek_pavel/InfraGaugeTheory/Presentation.nb)** (runs on the Wolfram Cloud).
 
+Ready-made example substrates and ambient styles for the analyses: **[LLM-generated example-graphs notebook](https://www.wolframcloud.com/obj/hajek_pavel/ExampleGraphs.nb)** (runs on the Wolfram Cloud).
+
 ## ⚖️ License
 
 MIT
