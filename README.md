@@ -1,5 +1,7 @@
 # 🛜 InfraGaugeTheory
 
+> ⚠️ **Actively developed, experimental research code.** It undergoes frequent cleanings and refactors, and the API may change without notice.
+
 Discrete gauge theory on graphs at the infra-scale — using only the connectivity structure, with no labels — as it arises from hypergraph rewriting in the [Wolfram Physics Project](https://www.wolframphysics.org).
 
 This project detects and describes fiber-bundle structure in graphs and develops core elements of gauge theory on the discrete substrate: sections, connections, parallel transport, and Wilson loops. We run computational experiments as the underlying graph is refined by rewriting, studying the evolution of gauge-theoretic observables. A central question is what kind of limiting gauge theory emerges, which we probe, for example, through the behavior of Wilson loops.
@@ -21,8 +23,10 @@ We also clarify the relation to lattice gauge theory and to "mesoscale" models t
 
 ## ✨ Usage
 
+Install from the Wolfram Cloud:
+
 ```wolfram
-PacletDirectoryLoad["/path/to/InfraGaugeTheory"]
+PacletInstall["https://www.wolframcloud.com/obj/hajek_pavel/InfraGaugeTheory.paclet", ForceVersionInstall -> True]
 Needs["WolframInstitute`InfraGaugeTheory`"]
 ```
 
