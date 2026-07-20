@@ -2,8 +2,8 @@ PacletObject[
   <|
     "Name" -> "WolframInstitute/InfraGaugeTheory",
     "Description" -> "Discrete gauge theory on graphs: fiber bundles, connections, holonomy, Wilson loops",
-    "Creator" -> "Pavel Pokorny",
-    "Version" -> "1.0.5",
+    "Creator" -> "Pavel Hajek",
+    "Version" -> "1.0.7",
     "WolframVersion" -> "14.3+",
     "PublisherID" -> "WolframInstitute",
     "License" -> "MIT",

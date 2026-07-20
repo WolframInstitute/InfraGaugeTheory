@@ -167,9 +167,11 @@ threeDMethod[total_Graph, proj_Association, section_Association, connection_, pr
     fibers = GroupBy[Normal@proj, Last -> First];
     sectionVerts = Values[section];
     connEdges = If[connection === None, {}, EdgeList[connection]];
-    baseCoords =
-      AssociationThread[VertexList@base,
-        GraphEmbedding[base, OptionValue["BaseGraphLayout"]]];
+    baseCoords = Replace[OptionValue["BaseVertexCoordinates"], {
+      Automatic :> AssociationThread[VertexList@base,
+        GraphEmbedding[base, OptionValue["BaseGraphLayout"]]],
+      assoc_Association :> assoc
+    }];
     meanEdgeLen = If[EdgeCount@base > 0,
       Mean @ Map[EuclideanDistance @@ (baseCoords /@ (List @@ #)) &, EdgeList@base], 1];
     vertexCoords =
