@@ -120,7 +120,9 @@ FindCanonicalSection[ total_Graph, proj_Association ] :=
     ttgVertexSet = Association @ Thread[ VertexList[ ttg ] -> True ];
     section = AssociationMap[
       vertex |-> With[ { canonical = { vertex, Reverse[ vertex ] } },
-        If[ TrueQ @ ttgVertexSet[ canonical ], canonical, Missing[ "NoCanonical" ] ]
+        (* Lookup, not application: an Association applied to a List key does a
+           multi-lookup, and every vertex here is a List. *)
+        If[ TrueQ @ Lookup[ ttgVertexSet, Key @ canonical, False ], canonical, Missing[ "NoCanonical" ] ]
       ],
       VertexList[ total ]
     ];
