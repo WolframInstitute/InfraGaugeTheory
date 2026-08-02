@@ -35,6 +35,7 @@ Test on example graphs.
 | Notebook | Description | Versions |
 |----------|-------------|----------|
 | Tautological 1-form | Tautological section of the double cotangent graph | [LLM](https://www.wolframcloud.com/obj/hajek_pavel/InfraGaugeTheory/CotangentBundle.nb) |
+| Discrete symplectic geometry | Symplectic pairing, Lagrangian subgraphs, circle/torus (non-)convergence | [LLM](https://www.wolframcloud.com/obj/hajek_pavel/InfraGaugeTheory/SymplecticGeometry.nb) |
 | Levi-Civita connection |  |  |
 | Twisted fiber bundles |  |  |
 | Wilson loops |  |  |

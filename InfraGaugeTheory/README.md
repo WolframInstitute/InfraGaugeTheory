@@ -22,5 +22,6 @@ Ready-made example substrates and ambient styles for the analyses: **[LLM-genera
 | Notebook | Description | Link | Revision By |
 |---|---|---|---|
 | Cotangent bundles and the tautological 1-form | Geodesic fibers at scale r, the three horizontal rules and their nesting, the germ flip as the tangent–cotangent identification, and the tautological section of the double cotangent graph | [Wolfram Cloud](https://www.wolframcloud.com/obj/hajek_pavel/InfraGaugeTheory/CotangentBundle.nb) |  |
+| Discrete symplectic geometry on the cotangent graph | A discrete symplectic pairing built from the polar-form pairing, Lagrangian subgraphs (the zero section, a cotangent fiber), and how the pairing behaves on circle and torus graphs | [Wolfram Cloud](https://www.wolframcloud.com/obj/hajek_pavel/InfraGaugeTheory/SymplecticGeometry.nb) |  |
 
 > ⚠️ **LLM-generated from the code base.** These notebooks are written by an LLM directly from the source, as a demonstration of a mode of access to computational mathematics in which the source of truth for the formalism is the code and not the prose. They are **not revised by a human** by default. Where a human revision exists it is linked in the *Revision By* column, under the name of its author; an em dash means no revised version exists yet.
