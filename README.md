@@ -39,7 +39,7 @@ Test on example graphs.
 | Levi-Civita connection |  |  |
 | Twisted fiber bundles |  |  |
 | Wilson loops |  |  |
-| WPP Coordinatization Pipeline | Gauge theory from causal graphs |  |
+| Causal coordinatization and slice fibrations | Observer chains, radar coordinatization, foliations, and slice fibrations over the coordinate grid on causal graphs | [LLM](https://www.wolframcloud.com/obj/hajek_pavel/InfraGaugeTheory/CausalGaugePipeline.nb) |
 
 ## 📚 Main References
 
