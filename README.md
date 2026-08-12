@@ -34,13 +34,12 @@ Test on example graphs.
 
 | Notebook | Description | Versions |
 |----------|-------------|----------|
-| Tautological 1-form | Tautological section of the double cotangent graph | [LLM](https://www.wolframcloud.com/obj/hajek_pavel/InfraGaugeTheory/CotangentBundle.nb) |
-| Discrete symplectic geometry | Symplectic pairing, Lagrangian subgraphs, circle/torus (non-)convergence | [LLM](https://www.wolframcloud.com/obj/hajek_pavel/InfraGaugeTheory/SymplecticGeometry.nb) |
+| The canonical 1-form and discrete symplectic geometry | The tautological 1-form as a section of the double cotangent graph, its shadow cochain and the symplectic cochain ω = dθ, perfect matchings as the isotropic 1-forms, winding numbers as actions on subdivided circles, the intersection form as the tessellation-independent symplectic form of the torus, and the non-backtracking geodesic flow with its Ihara zeta orbit census | [LLM](https://www.wolframcloud.com/obj/hajek_pavel/InfraGaugeTheory/SymplecticGeometry.nb) |
 | Levi-Civita connection |  |  |
 | Twisted fiber bundles |  |  |
 | Wilson loops |  |  |
 | Causal coordinatization and slice fibrations | Observer chains, radar coordinatization, foliations, and slice fibrations over the coordinate grid on causal graphs | [LLM](https://www.wolframcloud.com/obj/hajek_pavel/InfraGaugeTheory/CausalGaugePipeline.nb) |
-| Fibered graphs and the bundle predicates | The Meeting-1 definition of a graph fibration, the three drawing methods, sections, connections, holonomy, and the five bundle predicates separated by an eight-object battery in which each row fails exactly one clause | [LLM](https://www.wolframcloud.com/obj/hajek_pavel/InfraGaugeTheory/FiberedGraphs.nb) |
+| Fibered graphs | The definition of a graph fibration, the three drawing methods, sections, connections, holonomy, and the five bundle predicates separated by an eight-object battery in which each row fails exactly one clause | [LLM](https://www.wolframcloud.com/obj/hajek_pavel/InfraGaugeTheory/FiberedGraphs.nb) |
 
 ## 📚 Main References
 
